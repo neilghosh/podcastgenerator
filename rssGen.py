@@ -9,7 +9,7 @@ import datetime
 import time
 from email import utils
 
-maxItems = 3
+maxItems = 2000
 
 nowdt = datetime.datetime.now()
 nowtuple = nowdt.timetuple()
@@ -49,9 +49,9 @@ for url in temp:
     output.write('<title>'+url.split('/')[-1].split('.')[0]+'</title>\n')
     output.write('<link>'+url+'</link>\n')
     output.write('<guid>'+url+'</guid>\n')
-    output.write('<description></description>\n')
+    output.write('<description>'+url.split('/')[-2]+'</description>\n')
     output.write('<enclosure url="'+url+'" length="'+response.info().getheader('Content-Length').strip()+'" type="audio/mpeg"/>\n')
-    output.write('<category>Podcasts</category>\n')
+    output.write('<category>'+url.split('/')[-2]+'</category>\n')
     output.write('<pubDate>'+modifiedDate+'</pubDate>\n')
     output.write('</item>\n')
     items = items +1
